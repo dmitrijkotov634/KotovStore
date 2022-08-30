@@ -13,12 +13,12 @@
 
     <fragment
         android:id="@+id/AboutFragment"
-        android:name="com.wavecat.kotovstore.fragment.AppsFragment"
+        android:name="com.wavecat.kotovstore.fragment.AboutFragment"
         android:label="@string/about"
         tools:layout="@layout/apps_fragment" />
 
     <fragment
-        android:id="@+id/AppPageFragment"
+        android:id="@+id/PageFragment"
         android:name="com.wavecat.kotovstore.fragment.PageFragment"
         tools:layout="@layout/page_fragment" />
 

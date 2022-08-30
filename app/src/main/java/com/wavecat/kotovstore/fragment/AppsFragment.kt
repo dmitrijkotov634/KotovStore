@@ -38,7 +38,7 @@ class AppsFragment : Fragment() {
         model.apps.observe(viewLifecycleOwner) {
             binding.list.adapter = AppsAdapter(pm, it) { app ->
                 model.selectApp(app)
-                findNavController().navigate(R.id.AppPageFragment)
+                findNavController().navigate(R.id.PageFragment)
             }
 
             binding.swipeRefreshLayout.isRefreshing = false
