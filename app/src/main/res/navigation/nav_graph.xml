@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/AppsFragment">
+
+    <fragment
+        android:id="@+id/AppsFragment"
+        android:name="com.wavecat.kotovstore.fragment.AppsFragment"
+        android:label="@string/apps"
+        tools:layout="@layout/apps_fragment" />
+
+    <fragment
+        android:id="@+id/AboutFragment"
+        android:name="com.wavecat.kotovstore.fragment.AppsFragment"
+        android:label="@string/about"
+        tools:layout="@layout/apps_fragment" />
+
+    <fragment
+        android:id="@+id/AppPageFragment"
+        android:name="com.wavecat.kotovstore.fragment.PageFragment"
+        tools:layout="@layout/page_fragment" />
+
+</navigation>

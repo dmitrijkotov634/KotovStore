@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1077513588598",
+    "project_id": "kotovstore-e0ac2",
+    "storage_bucket": "kotovstore-e0ac2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077513588598:android:def83e129daf6535207457",
+        "android_client_info": {
+          "package_name": "com.wavecat.kotovstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077513588598-mn8dsnaihcn9kelnfai1d21sriigbt5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuFq29us9YzzL5eantJrF1zn-nQkHv0HQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077513588598-mn8dsnaihcn9kelnfai1d21sriigbt5m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
