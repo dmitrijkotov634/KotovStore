@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.wavecat.kotovstore.MainViewModel
 import com.wavecat.kotovstore.R
@@ -46,8 +47,13 @@ class AppsFragment : Fragment() {
         }
 
         model.currentApp.observe(viewLifecycleOwner) {
-            if (it != null)
-                findNavController().navigate(R.id.PageFragment)
+            if (it != null) {
+                val builder = NavOptions.Builder()
+                    .setEnterAnim(androidx.appcompat.R.anim.abc_fade_in)
+                    .setExitAnim(androidx.appcompat.R.anim.abc_fade_out)
+
+                findNavController().navigate(R.id.PageFragment, null, builder.build())
+            }
         }
 
         binding.swipeRefreshLayout.setOnRefreshListener {

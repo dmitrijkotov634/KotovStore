@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -38,8 +39,12 @@ class MainActivity : AppCompatActivity() {
         binding.included.navView.setupWithNavController(navController)
 
         binding.included.navView.setOnItemSelectedListener {
+            val builder = NavOptions.Builder()
+                .setEnterAnim(androidx.appcompat.R.anim.abc_fade_in)
+                .setExitAnim(androidx.appcompat.R.anim.abc_fade_out)
+
             navController.popBackStack()
-            navController.navigate(getMenu(it.itemId))
+            navController.navigate(getMenu(it.itemId), null, builder.build())
             true
         }
     }

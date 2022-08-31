@@ -12,7 +12,7 @@ android {
         applicationId = "com.wavecat.kotovstore"
         minSdk = 21
         targetSdk = 32
-        versionCode = 2
+        versionCode = 3
         versionName = "0.1"
     }
 

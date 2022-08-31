@@ -1,6 +1,7 @@
 package com.wavecat.kotovstore.adapter
 
 import android.content.pm.PackageManager
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,7 +58,7 @@ class AppsAdapter(
         Glide
             .with(context)
             .load(app.icon)
-            .placeholder(R.drawable.placeholder)
+            .placeholder(ColorDrawable(0x2F000000))
             .into(holder.binding.appIcon)
     }
 

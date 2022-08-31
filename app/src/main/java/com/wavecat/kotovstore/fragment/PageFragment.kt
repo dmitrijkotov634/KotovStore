@@ -56,7 +56,7 @@ class PageFragment : Fragment() {
                 .observe(viewLifecycleOwner) work@{
                     for (workInfo in it) {
                         binding.progress.visibility = View.VISIBLE
-                        binding.pageIcon.alpha = 0.85f
+                        binding.pageIcon.alpha = 0.5f
 
                         binding.pageInstall.text =
                             binding.root.context.getString(R.string.cancel)
@@ -73,6 +73,7 @@ class PageFragment : Fragment() {
                         return@work
                     }
 
+                    binding.progress.progress = 0
                     binding.progress.visibility = View.INVISIBLE
                     binding.pageIcon.alpha = 1f
 

@@ -44,7 +44,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
         val workRequest: WorkRequest =
             OneTimeWorkRequestBuilder<InstallWorker>()
-                .addTag(currentApp.value!!.app.packageName)
+                .addTag(currentApp.value!!.info.apk)
                 .setConstraints(
                     Constraints.Builder()
                         .setRequiredNetworkType(NetworkType.CONNECTED)
