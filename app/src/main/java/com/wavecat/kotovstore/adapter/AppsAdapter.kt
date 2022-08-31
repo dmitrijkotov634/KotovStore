@@ -57,6 +57,7 @@ class AppsAdapter(
         Glide
             .with(context)
             .load(app.icon)
+            .placeholder(R.drawable.placeholder)
             .into(holder.binding.appIcon)
     }
 

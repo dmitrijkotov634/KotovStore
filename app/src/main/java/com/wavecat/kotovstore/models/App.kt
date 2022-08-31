@@ -10,5 +10,6 @@ data class App(
     val category: String = "",
     val packageName: String = "",
     val versionCode: Long = 0,
-    val icon: String = ""
+    val icon: String = "",
+    val minSdk: Int = 0
 )

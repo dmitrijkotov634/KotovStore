@@ -35,13 +35,19 @@ class AppsFragment : Fragment() {
 
         val pm = requireContext().packageManager
 
-        model.apps.observe(viewLifecycleOwner) {
-            binding.list.adapter = AppsAdapter(pm, it) { app ->
+        model.apps.observe(viewLifecycleOwner) { apps ->
+            binding.list.adapter = AppsAdapter(pm, apps.filter {
+                it.minSdk <= android.os.Build.VERSION.SDK_INT
+            }) { app ->
                 model.selectApp(app)
-                findNavController().navigate(R.id.PageFragment)
             }
 
             binding.swipeRefreshLayout.isRefreshing = false
+        }
+
+        model.currentApp.observe(viewLifecycleOwner) {
+            if (it != null)
+                findNavController().navigate(R.id.PageFragment)
         }
 
         binding.swipeRefreshLayout.setOnRefreshListener {

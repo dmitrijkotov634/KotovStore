@@ -24,24 +24,27 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    var currentApp: MutableLiveData<App> = MutableLiveData()
-    var currentInfo: MutableLiveData<Info> = MutableLiveData()
+    class DetailedInfo(val app: App, val info: Info)
+
+    var currentApp: MutableLiveData<DetailedInfo?> = MutableLiveData()
 
     fun selectApp(app: App) {
-        currentApp.postValue(app)
-
         database.child("info").child(app.id.toString()).get()
             .addOnSuccessListener {
-                currentInfo.postValue(it.getValue<Info>())
+                currentApp.value = DetailedInfo(app, it.getValue<Info>()!!)
             }
     }
 
+    fun unselectApp() {
+        currentApp.value = null
+    }
+
     fun installApp() {
-        if (currentInfo.value == null) return
+        if (currentApp.value == null) return
 
         val workRequest: WorkRequest =
             OneTimeWorkRequestBuilder<InstallWorker>()
-                .addTag(currentApp.value!!.packageName)
+                .addTag(currentApp.value!!.app.packageName)
                 .setConstraints(
                     Constraints.Builder()
                         .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -49,7 +52,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 )
                 .setInputData(
                     workDataOf(
-                        InstallWorker.URL to currentInfo.value!!.apk
+                        InstallWorker.URL to currentApp.value!!.info.apk
                     )
                 )
                 .build()
@@ -60,7 +63,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun loadApps() {
         database.child("apps").get()
             .addOnSuccessListener {
-                apps.postValue(it.getValue<List<App>>())
+                apps.value = it.getValue<List<App>>()
             }
     }
 }

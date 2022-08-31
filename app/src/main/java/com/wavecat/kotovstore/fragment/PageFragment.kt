@@ -37,17 +37,19 @@ class PageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        model.currentApp.observe(viewLifecycleOwner) { app ->
-            binding.pageName.text = app.name
-            binding.pageAuthor.text = app.author
+        model.currentApp.observe(viewLifecycleOwner) { main ->
+            if (main == null) return@observe
+
+            binding.pageName.text = main.app.name
+            binding.pageAuthor.text = main.app.author
 
             Glide
                 .with(requireActivity())
-                .load(app.icon)
+                .load(main.app.icon)
                 .into(binding.pageIcon)
 
             model.workManager.getWorkInfosLiveData(
-                WorkQuery.Builder.fromTags(listOf(app.packageName))
+                WorkQuery.Builder.fromTags(listOf(main.info.apk))
                     .addStates(listOf(WorkInfo.State.RUNNING))
                     .build()
             )
@@ -76,23 +78,28 @@ class PageFragment : Fragment() {
 
                     try {
                         val packageInfo = requireContext().packageManager.getPackageInfo(
-                            app.packageName,
+                            main.app.packageName,
                             PackageManager.GET_GIDS
                         )
 
-                        if (app.versionCode > PackageInfoCompat.getLongVersionCode(
+                        if (main.app.versionCode > PackageInfoCompat.getLongVersionCode(
                                 packageInfo
                             )
                         ) {
                             binding.pageInstall.text =
                                 binding.root.context.getString(R.string.update)
                             binding.pageInstall.setOnClickListener { model.installApp() }
+
+                            if (main.info.notice != null) {
+                                binding.noticeCard.visibility = View.VISIBLE
+                                binding.notice.text = main.info.notice
+                            }
                         } else {
                             binding.pageInstall.text = binding.root.context.getString(R.string.open)
                             binding.pageInstall.setOnClickListener {
                                 startActivity(
                                     requireContext().packageManager.getLaunchIntentForPackage(
-                                        app.packageName
+                                        main.app.packageName
                                     )
                                 )
                             }
@@ -103,12 +110,15 @@ class PageFragment : Fragment() {
                         binding.pageInstall.setOnClickListener { model.installApp() }
                     }
                 }
-        }
 
-        model.currentInfo.observe(viewLifecycleOwner) { info ->
-            binding.description.text = info.description
-            binding.screenshots.adapter = ScreenshotsAdapter(info.screenshots)
+            binding.description.text = main.info.description
+            binding.screenshots.adapter = ScreenshotsAdapter(main.info.screenshots)
         }
+    }
+
+    override fun onPause() {
+        model.unselectApp()
+        super.onPause()
     }
 
     override fun onDestroyView() {

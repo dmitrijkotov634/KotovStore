@@ -8,6 +8,7 @@
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.1375" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1375" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1375" />
+        <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/drawable/placeholder.xml" value="0.1375" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/layout/about_fragment.xml" value="0.4" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/layout/app_item.xml" value="0.4" />
@@ -18,7 +19,7 @@
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/layout/fragment_first.xml" value="0.1" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/layout/fragment_second.xml" value="0.19972826086956522" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/layout/gallery_item.xml" value="0.19972826086956522" />
-        <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/layout/page_fragment.xml" value="0.8800000000000001" />
+        <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/layout/page_fragment.xml" value="0.25" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/layout/screenshot_item.xml" value="0.1125" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/menu/bottom_nav_menu.xml" value="0.38046875" />
         <entry key="..\:/Users/Dmitry/AndroidStudioProjects/KotovStore/app/src/main/res/menu/menu_main.xml" value="0.1" />
