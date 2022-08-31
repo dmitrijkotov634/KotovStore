@@ -1,7 +1,9 @@
 package com.wavecat.kotovstore.fragment
 
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -93,7 +95,16 @@ class PageFragment : Fragment() {
 
                             if (main.info.notice != null) {
                                 binding.noticeCard.visibility = View.VISIBLE
-                                binding.notice.text = main.info.notice
+                                binding.notice.text =
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                        Html.fromHtml(
+                                            main.info.notice,
+                                            Html.FROM_HTML_MODE_COMPACT
+                                        )
+                                    } else {
+                                        @Suppress("DEPRECATION")
+                                        Html.fromHtml(main.info.notice)
+                                    }
                             }
                         } else {
                             binding.pageInstall.text = binding.root.context.getString(R.string.open)
